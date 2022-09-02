@@ -1,0 +1,26 @@
+#!/usr/bin/env zsh
+
+_symfony_complete() {
+    local curcontext="${curcontext}" state line ret=1
+    typeset -A opt_args
+
+    _arguments '1: :->cmds' '*: :->args' && ret=0
+
+    case ${state} in
+        cmds)
+            IFS=$'\n' local cmds_list=($("${words[1]}" list --no-ansi 2>/dev/null | _symfony_complete_commands))
+            _values '' ${cmds_list} && ret=0
+            ;;
+        args)
+            IFS=$'\n' local opts_list=($("${words[1]}" "${line[1]}" --help --no-ansi 2>/dev/null | _symfony_complete_options))
+            _arguments '*: :_files' ${opts_list} && ret=0
+            ;;
+    esac
+
+    return ret
+} 2>/dev/null
+
+autoload _symfony_complete_commands
+autoload _symfony_complete_options
+
+_symfony_complete "$@"

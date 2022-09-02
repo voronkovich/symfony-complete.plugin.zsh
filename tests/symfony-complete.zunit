@@ -1,0 +1,33 @@
+#!/usr/bin/env zunit
+
+@test '_symfony_complete_commands(): extracts commands' {
+    autoload _symfony_complete_commands
+
+    local input="${FIXTURES_PATH}/console_list.txt"
+    local expected="${FIXTURES_PATH}/_symfony_complete_commands_expected.txt"
+
+    _symfony_complete_commands < "${input}" | expected "${expected}"
+
+    assert $state equals 0
+}
+
+@test '_symfony_complete_options(): extracts command options' {
+    autoload _symfony_complete_options
+
+    local input="${FIXTURES_PATH}/console_debug_container.txt"
+    local expected="${FIXTURES_PATH}/_symfony_complete_options_expected.txt"
+
+    _symfony_complete_options < "${input}" | expected "${expected}"
+
+    assert $state equals 0
+}
+
+@setup {
+    load '../symfony-complete.plugin.zsh'
+
+    export FIXTURES_PATH="${0:A:h}/tests/_fixtures"
+
+    expected() {
+        command diff --report-identical-files  --unified - "${1}"
+    }
+}

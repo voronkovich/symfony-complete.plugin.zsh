@@ -1,0 +1,81 @@
+Description:
+  Display current services for an application
+
+Usage:
+  debug:container [options] [--] [<name>]
+
+Arguments:
+  name                       A service name (foo)
+
+Options:
+      --show-arguments       Show arguments in services
+      --show-hidden          Show hidden (internal) services
+      --tag=TAG              Show all services with a specific tag
+      --tags                 Display tagged services for an application
+      --parameter=PARAMETER  Display a specific parameter for an application
+      --parameters           Display parameters for an application
+      --types                Display types (classes/interfaces) available in the container
+      --env-var=ENV-VAR      Display a specific environment variable used in the container
+      --env-vars             Display environment variables used in the container
+      --format=FORMAT        The output format (txt, xml, json, or md) [default: "txt"]
+      --raw                  To output raw description
+      --deprecations         Display deprecations generated when compiling and warming up the container
+  -h, --help                 Display help for the given command. When no command is given display help for the list command
+  -q, --quiet                Do not output any message
+  -V, --version              Display this application version
+      --ansi|--no-ansi       Force (or disable --no-ansi) ANSI output
+  -n, --no-interaction       Do not ask any interactive question
+  -e, --env=ENV              The Environment name. [default: "dev"]
+      --no-debug             Switch off debug mode.
+  -v|vv|vvv, --verbose       Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+
+Help:
+  The debug:container command displays all configured public services:
+  
+    php /run/user/1000/projects/hey/bin/console debug:container
+  
+  To see deprecations generated during container compilation and cache warmup, use the --deprecations option:
+  
+    php /run/user/1000/projects/hey/bin/console debug:container --deprecations
+  
+  To get specific information about a service, specify its name:
+  
+    php /run/user/1000/projects/hey/bin/console debug:container validator
+  
+  To get specific information about a service including all its arguments, use the --show-arguments flag:
+  
+    php /run/user/1000/projects/hey/bin/console debug:container validator --show-arguments
+  
+  To see available types that can be used for autowiring, use the --types flag:
+  
+    php /run/user/1000/projects/hey/bin/console debug:container --types
+  
+  To see environment variables used by the container, use the --env-vars flag:
+  
+    php /run/user/1000/projects/hey/bin/console debug:container --env-vars
+  
+  Display a specific environment variable by specifying its name with the --env-var option:
+  
+    php /run/user/1000/projects/hey/bin/console debug:container --env-var=APP_ENV
+  
+  Use the --tags option to display tagged public services grouped by tag:
+  
+    php /run/user/1000/projects/hey/bin/console debug:container --tags
+  
+  Find all services with a specific tag by specifying the tag name with the --tag option:
+  
+    php /run/user/1000/projects/hey/bin/console debug:container --tag=form.type
+  
+  Use the --parameters option to display all parameters:
+  
+    php /run/user/1000/projects/hey/bin/console debug:container --parameters
+  
+  Display a specific parameter by specifying its name with the --parameter option:
+  
+    php /run/user/1000/projects/hey/bin/console debug:container --parameter=kernel.debug
+  
+  By default, internal services are hidden. You can display them
+  using the --show-hidden flag:
+  
+    php /run/user/1000/projects/hey/bin/console debug:container --show-hidden
+  

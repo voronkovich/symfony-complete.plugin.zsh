@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+_symfony_complete_commands() {
+    command sed -nr \
+        -e '1,/Available commands/d' \
+        -e 's/([[]|[]])/\\\1/g' \
+        -e 's/:/\\\:/g' \
+        -e 's/^  ([[:alnum:]\\:-]+).*  (.*)$/\1[\2]/p'
+}
+
+_symfony_complete_commands "$@"
