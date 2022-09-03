@@ -1,0 +1,65 @@
+name: Unit tests
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  TERM: xterm-256color
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'tests/**'
+      - '.github/workflows/tests.yaml'
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+
+  zunit-tests:
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: ['macos-10.15','macos-11','macos-12','ubuntu-20.04','ubuntu-22.04']
+      fail-fast: true
+
+    steps:
+      - name: checkout ${{ github.repository }}
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: "Upgrade glibc"
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get clean && sudo apt-get update
+          sudo apt-get install \
+          build-essential subversion \
+          gcc gcc-multilib \
+          glibc-source libc6 libc6-dev \
+          musl musl-dev musl-tools
+
+      - name: "Install ZSH"
+        run: |
+          brew install ncurses svn unzip zsh
+          exec bash
+          echo "eval $(brew shellenv)" > .profile
+
+      - name: "Install Revolver"
+        run: |
+          curl -L https://raw.githubusercontent.com/molovo/revolver/master/revolver > /usr/local/bin/revolver
+          chmod u+x /usr/local/bin/revolver
+
+      - name: "Install ZUnit"
+        run: |
+          curl -L https://github.com/zunit-zsh/zunit/releases/download/v0.8.2/zunit > /usr/local/bin/zunit
+          chmod u+x /usr/local/bin/zunit
+
+      - name: "Run zunit"
+        run: zunit
