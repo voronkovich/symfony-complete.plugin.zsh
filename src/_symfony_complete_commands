@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 _symfony_complete_commands() {
-    command sed -nr \
+    command sed -nE \
         -e '1,/Available commands/d' \
         -e 's/([[]|[]])/\\\1/g' \
         -e 's/:/\\\:/g' \

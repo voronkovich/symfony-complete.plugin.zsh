@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 _symfony_complete_options() {
-    command sed -nr \
+    command sed -nE \
         -e '1,/^Options/d' \
         -e '/^Help/,$d' \
         -e 's/([[]|[]])/\\\1/g' \
