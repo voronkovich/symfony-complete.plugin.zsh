@@ -1,5 +1,7 @@
 # Universal ZSH completion for Symfony applications
 
+[![Tests](https://github.com/voronkovich/symfony-complete.plugin.zsh/actions/workflows/tests.yaml/badge.svg)](https://github.com/voronkovich/symfony-complete.plugin.zsh/actions/workflows/tests.yaml)
+
 A zsh plugin for the [symfony/console](https://symfony.com/doc/current/components/console.html) based applications (e.g. `composer`, `bin/console`, `artisan`, `php-cs-fixer` and etc.). This plugin supports autocompletion for subcommands (`composer req`) and GNU-style options (`--help`).
 
 ![Commands autocompletion](/screenshots/commands.png?raw=true "Commands autocompletion")
