@@ -32,50 +32,50 @@ Options:
 Help:
   The debug:container command displays all configured public services:
   
-    php /run/user/1000/projects/hey/bin/console debug:container
+    php bin/console debug:container
   
   To see deprecations generated during container compilation and cache warmup, use the --deprecations option:
   
-    php /run/user/1000/projects/hey/bin/console debug:container --deprecations
+    php bin/console debug:container --deprecations
   
   To get specific information about a service, specify its name:
   
-    php /run/user/1000/projects/hey/bin/console debug:container validator
+    php bin/console debug:container validator
   
   To get specific information about a service including all its arguments, use the --show-arguments flag:
   
-    php /run/user/1000/projects/hey/bin/console debug:container validator --show-arguments
+    php bin/console debug:container validator --show-arguments
   
   To see available types that can be used for autowiring, use the --types flag:
   
-    php /run/user/1000/projects/hey/bin/console debug:container --types
+    php bin/console debug:container --types
   
   To see environment variables used by the container, use the --env-vars flag:
   
-    php /run/user/1000/projects/hey/bin/console debug:container --env-vars
+    php bin/console debug:container --env-vars
   
   Display a specific environment variable by specifying its name with the --env-var option:
   
-    php /run/user/1000/projects/hey/bin/console debug:container --env-var=APP_ENV
+    php bin/console debug:container --env-var=APP_ENV
   
   Use the --tags option to display tagged public services grouped by tag:
   
-    php /run/user/1000/projects/hey/bin/console debug:container --tags
+    php bin/console debug:container --tags
   
   Find all services with a specific tag by specifying the tag name with the --tag option:
   
-    php /run/user/1000/projects/hey/bin/console debug:container --tag=form.type
+    php bin/console debug:container --tag=form.type
   
   Use the --parameters option to display all parameters:
   
-    php /run/user/1000/projects/hey/bin/console debug:container --parameters
+    php bin/console debug:container --parameters
   
   Display a specific parameter by specifying its name with the --parameter option:
   
-    php /run/user/1000/projects/hey/bin/console debug:container --parameter=kernel.debug
+    php bin/console debug:container --parameter=kernel.debug
   
   By default, internal services are hidden. You can display them
   using the --show-hidden flag:
   
-    php /run/user/1000/projects/hey/bin/console debug:container --show-hidden
+    php bin/console debug:container --show-hidden
   

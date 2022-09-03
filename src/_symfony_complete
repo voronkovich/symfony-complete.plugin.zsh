@@ -20,7 +20,7 @@ _symfony_complete() {
     return ret
 } 2>/dev/null
 
-autoload _symfony_complete_commands
-autoload _symfony_complete_options
+autoload -U _symfony_complete_commands
+autoload -U _symfony_complete_options
 
 _symfony_complete "$@"
