@@ -1,23 +1,21 @@
 #!/usr/bin/env zunit
 
-@test '_symfony_complete_commands(): extracts commands' {
-    autoload _symfony_complete_commands
-
+@test '__symfony_complete_commands(): extracts commands' {
     local input="${FIXTURES_PATH}/console_list.txt"
-    local expected="${FIXTURES_PATH}/_symfony_complete_commands_expected.txt"
+    local expected="${FIXTURES_PATH}/__symfony_complete_commands_expected.txt"
 
-    _symfony_complete_commands < "${input}" | expected "${expected}"
+    __symfony_complete_commands < "${input}" | expected "${expected}"
 
     assert $state equals 0
 }
 
-@test '_symfony_complete_options(): extracts command options' {
+@test '__symfony_complete_options(): extracts command options' {
     autoload _symfony_complete_options
 
     local input="${FIXTURES_PATH}/console_debug_container.txt"
-    local expected="${FIXTURES_PATH}/_symfony_complete_options_expected.txt"
+    local expected="${FIXTURES_PATH}/__symfony_complete_options_expected.txt"
 
-    _symfony_complete_options < "${input}" | expected "${expected}"
+    __symfony_complete_options < "${input}" | expected "${expected}"
 
     assert $state equals 0
 }

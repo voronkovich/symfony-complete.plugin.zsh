@@ -26,8 +26,6 @@ source path/to/cloned/repo/symfony-complete.plugin.zsh
 Enable autocompletion in your `.zshrc` for all needed commands:
 
 ```sh
-autoload -U _symfony_complete
-
 # Yes, it can complete symfony binary too :)
 compdef _symfony_complete symfony
 compdef _symfony_complete composer

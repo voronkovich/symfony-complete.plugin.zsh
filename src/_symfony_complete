@@ -8,19 +8,16 @@ _symfony_complete() {
 
     case ${state} in
         cmds)
-            IFS=$'\n' local cmds_list=($("${words[1]}" list --no-ansi 2>/dev/null | _symfony_complete_commands))
+            IFS=$'\n' local cmds_list=($("${words[1]}" list --no-ansi 2>/dev/null | __symfony_complete_commands))
             _values '' ${cmds_list} && ret=0
             ;;
         args)
-            IFS=$'\n' local opts_list=($("${words[1]}" "${line[1]}" --help --no-ansi 2>/dev/null | _symfony_complete_options))
+            IFS=$'\n' local opts_list=($("${words[1]}" "${line[1]}" --help --no-ansi 2>/dev/null | __symfony_complete_options))
             _arguments '*: :_files' ${opts_list} && ret=0
             ;;
     esac
 
     return ret
 } 2>/dev/null
-
-autoload -U _symfony_complete_commands
-autoload -U _symfony_complete_options
 
 _symfony_complete "$@"
