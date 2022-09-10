@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+__symfony_complete_options_extract() {
+    command sed -nE \
+        -e 's/([[]|[]])/\\\1/g' \
+        -e 's/:/\\\:/g' \
+        -e 's/^.*[[:space:]](--[[:alnum:]-]+=?).*  (.*)$/\1[\2]/p'
+}
+
+__symfony_complete_options_extract "$@"

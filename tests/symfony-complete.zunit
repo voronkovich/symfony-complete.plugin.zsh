@@ -10,8 +10,6 @@
 }
 
 @test '__symfony_complete_options(): extracts command options' {
-    autoload _symfony_complete_options
-
     local input="${FIXTURES_PATH}/console_debug_container.txt"
     local expected="${FIXTURES_PATH}/__symfony_complete_options_expected.txt"
 
