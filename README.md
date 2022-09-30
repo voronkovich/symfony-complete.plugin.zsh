@@ -9,13 +9,32 @@ A zsh plugin for the [symfony/console](https://symfony.com/doc/current/component
 
 ## Installation
 
-[Antigen](https://github.com/zsh-users/antigen):
+### [Antigen](https://github.com/zsh-users/antigen)
 
 ```sh
 antigen bundle voronkovich/symfony-complete.plugin.zsh
 ```
+### [Zplug](https://github.com/zplug/zplug)
 
-Or clone this repo and add this into your `.zshrc`:
+```sh
+zplug "voronkovich/symfony-complete.plugin.zsh"
+```
+
+### [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
+
+```sh
+git clone https://github.com/voronkovich/symfony-complete.plugin.zsh ~/.oh-my-zsh/custom/plugins/symfony-complete
+```
+
+Edit `.zshrc` to enable the plugin:
+
+```sh
+plugins=(... symfony-complete)
+```
+
+### Manual
+
+Clone this repo and add this into your `.zshrc`:
 
 ```sh
 source path/to/cloned/repo/symfony-complete.plugin.zsh
