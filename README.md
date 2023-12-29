@@ -12,7 +12,7 @@ A zsh plugin for the [symfony/console](https://symfony.com/doc/current/component
 ### [Antigen](https://github.com/zsh-users/antigen)
 
 ```sh
-antigen bundle voronkovich/symfony-complete.plugin.zsh
+antigen bundle "voronkovich/symfony-complete.plugin.zsh@main"
 ```
 ### [Zplug](https://github.com/zplug/zplug)
 
